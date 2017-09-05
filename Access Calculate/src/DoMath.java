@@ -8,6 +8,7 @@ public class DoMath {
 		System.out.println(Calculate.cube(5));
 		System.out.println(Calculate.average(5, 2));
 		System.out.println(Calculate.average(5,6,7));
+		System.out.println(Calculate.average();
 	}
 
 }
