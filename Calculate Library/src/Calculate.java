@@ -41,7 +41,10 @@ public class Calculate {
 	}
 	// This method converts an improper fraction into a mixed number.
 	public static String toMixedNum(double a, double b) {
-		return null;
+		String toMixedNum;
+		if (a%b !=0) {
+			String toMixedNum = ((a/b)+"_"+(a%b)+"/"+b);
+		} return toMixedNum; 
 		
 	}
 }
