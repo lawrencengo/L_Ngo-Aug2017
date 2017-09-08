@@ -41,10 +41,16 @@ public class Calculate {
 	}
 	// This method converts an improper fraction into a mixed number.
 	public static String toMixedNum(double a, double b) {
-		String toMixedNum;
-		if (a%b !=0) {
-			String toMixedNum = ((a/b)+"_"+(a%b)+"/"+b);
-		} return toMixedNum; 
+		double wholeNum= a/b;
+		double newNumerator = a%b;
+		return (wholeNum+"_"+newNumerator+"/"+b);
+	}
+	// This method converts a binomial multiplication into a quadratic equation.
+	public static String foil(int a, int b, int c, int d, String n) {
+		int first= (a*c);
+		int second=(a*d)+(b*c);
+		int third=(b*d);
+		return(first + "n^2"+ "+" +second+ "x"+"+"+third);
 		
 	}
 }
