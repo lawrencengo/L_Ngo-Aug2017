@@ -119,4 +119,60 @@ public class Calculate {
 		}
 
 	}
+	// This method raises a value to a positive integer power.
+	public static double exponent(double base, int exponent) {
+		double answer = 1;
+		for(int i = 0; i < exponent; i++){
+			answer *= base;
+		}
+		return answer;
+	}
+
+	// This method returns the factorial of the value passed.
+	public static int factorial(int a) {
+		int answer=1;
+		for(int i = 1; i<=a; i++){
+			answer = answer * i;
+		}
+		return answer;
+	
+	}
+	// This method determines whether or not an integer is prime.
+	public static boolean isPrime(int num1){
+		boolean prime;
+		num1 = (int) absValue(num1);
+		for(int i = 2; i<=num1-1; i++){
+			prime = Calculate.isDivisibleBy(num1, i);
+			System.out.println(i);
+			if(prime ==true){
+				return false;
+			}
+		}
+		return true;
+	}
+	// This method finds the greatest common factor of two integers.
+	public static int gcf(int num1, int num2){
+		int greatestCommonFactor = 1;
+		for(int i=1; i<=num1; i++){
+			if(isDivisibleBy(num1,i) && isDivisibleBy(num2,i)){
+				greatestCommonFactor=i;
+			}
+		}
+		return (greatestCommonFactor);
+	}
+	// This method returns an approximation of the square root of the value passed.
+	public static double sqrt(double num1){
+		double i = 0;
+		double sqrt = num1/2.0;
+		if(num1<=0){
+			throw new IllegalArgumentException("Cannot square root this number");
+		}
+		do{
+			i=sqrt;
+			sqrt=(i+(num1/i))/2.0;
+			
+		}while(i-sqrt !=0);
+		sqrt = round2(sqrt);
+		return sqrt;
+	}
 }
