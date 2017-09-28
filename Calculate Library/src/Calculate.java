@@ -65,6 +65,8 @@ public class Calculate {
 	// This method determines whether or not one integer is evenly divisible by
 	// another.
 	public static boolean isDivisibleBy(int num1, int num2) {
+		if (num2 == 0) {
+			throw new IllegalArgumentException("Cannot divide by 0");
 		if (num1 % num2 == 0) {
 			return (true);
 		} else {
@@ -121,6 +123,9 @@ public class Calculate {
 	}
 	// This method raises a value to a positive integer power.
 	public static double exponent(double base, int exponent) {
+		if (exponent < 0) {
+			throw new IllegalArgumentException("Cannot raise to an exponent less than 1");
+		}
 		double answer = 1;
 		for(int i = 0; i < exponent; i++){
 			answer *= base;
@@ -130,6 +135,9 @@ public class Calculate {
 
 	// This method returns the factorial of the value passed.
 	public static int factorial(int a) {
+		if (a < 0) {
+			throw new IllegalArgumentException("Cannot find the factorial of a negative number");
+		}
 		int answer=1;
 		for(int i = 1; i<=a; i++){
 			answer = answer * i;
@@ -162,6 +170,9 @@ public class Calculate {
 	}
 	// This method returns an approximation of the square root of the value passed.
 	public static double sqrt(double num1){
+		if(num1 < 0) {
+			throw new IllegalArgumentException("Cannot find the square root of a negative value");
+		}
 		double i = 0;
 		double sqrt = num1/2.0;
 		if(num1<=0){
@@ -174,5 +185,26 @@ public class Calculate {
 		}while(i-sqrt !=0);
 		sqrt = round2(sqrt);
 		return sqrt;
+	}
+	//
+	public static String quadForm (int a, int b, int c) {	
+		if(discriminant(a, b, c) < 0 ) {
+			return "No real roots";
+		}else if (discriminant(a, b, c) == 0) {
+			double realroot = (-b / (2 * a));
+			double realrootrounded = round2(realroot);
+				return "" + realrootrounded;
+			}else {
+			double root1 = (-b + sqrt(discriminant(a, b, c))) / (2 * a);
+			double root2 = (-b - sqrt(discriminant(a, b, c))) / (2 * a);
+			double roundedroot1 = round2(root1);
+			double roundedroot2 = round2(root2);
+			if (min(roundedroot1, roundedroot2) == roundedroot1) {
+				return root1 + " and " + root2;
+			}else {
+				return root2 + " and " + root1;
+			}
+		}
+		
 	}
 }

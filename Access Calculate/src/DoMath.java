@@ -25,6 +25,7 @@ public class DoMath {
 		System.out.println(Calculate.isPrime(16));
 		System.out.println(Calculate.gcf(2,4));
 		System.out.println(Calculate.sqrt(16));
+		System.out.println(Calculate.quadForm(2,4,6));
 	}
 
 }
