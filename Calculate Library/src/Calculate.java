@@ -195,7 +195,7 @@ public class Calculate {
 		return sqrt;
 	}
 
-	//
+	//This method uses coefficients of quadratic formula to approximate real roots.
 	public static String quadForm(int a, int b, int c) {
 		if (discriminant(a, b, c) < 0) {
 			return "No real roots";
