@@ -1,7 +1,7 @@
 /* Lawrence Ngo
  * September 5, 2017
  * This is our home grown library that will contain various mathematical methods.
-*/
+ */
 public class Calculate {
 	// This method takes an integer and returns its square.
 	public static int square(int operand) {
@@ -67,6 +67,7 @@ public class Calculate {
 	public static boolean isDivisibleBy(int num1, int num2) {
 		if (num2 == 0) {
 			throw new IllegalArgumentException("Cannot divide by 0");
+		}
 		if (num1 % num2 == 0) {
 			return (true);
 		} else {
@@ -93,41 +94,45 @@ public class Calculate {
 	}
 
 	// This method returns the larger of the values passed.
-	public static double max (double a, double b, double c) {
-		if(a > b && a > c){
+	public static double max(double a, double b, double c) {
+		if (a > b && a > c) {
 			return a;
-		}else if(b > a && b > c){
+		} else if (b > a && b > c) {
 			return b;
-		}else{
+		} else {
 			return c;
 		}
 	}
+
 	// This method returns the smaller of the values passed.
-	public static double min (double a, double b) {
-		if (a >b) {
+	public static double min(double a, double b) {
+		if (a > b) {
 			return b;
-		}else { 
-			return a;	
+		} else {
+			return a;
 		}
 	}
-	// This method rounds a double correctly to 2 decimal places and returns a double.
-	public static double round2(double number){
-		double x=number*1000;
-		double y=x%10;
-		if (y >=5){
-			return (x-y+10)/1000;
-		}else{
-			return (x - y)/1000;
+
+	// This method rounds a double correctly to 2 decimal places and returns a
+	// double.
+	public static double round2(double number) {
+		double x = number * 1000;
+		double y = x % 10;
+		if (y >= 5) {
+			return (x - y + 10) / 1000;
+		} else {
+			return (x - y) / 1000;
 		}
 
 	}
+
 	// This method raises a value to a positive integer power.
 	public static double exponent(double base, int exponent) {
 		if (exponent < 0) {
 			throw new IllegalArgumentException("Cannot raise to an exponent less than 1");
 		}
 		double answer = 1;
-		for(int i = 0; i < exponent; i++){
+		for (int i = 0; i < exponent; i++) {
 			answer *= base;
 		}
 		return answer;
@@ -138,73 +143,77 @@ public class Calculate {
 		if (a < 0) {
 			throw new IllegalArgumentException("Cannot find the factorial of a negative number");
 		}
-		int answer=1;
-		for(int i = 1; i<=a; i++){
+		int answer = 1;
+		for (int i = 1; i <= a; i++) {
 			answer = answer * i;
 		}
 		return answer;
-	
+
 	}
+
 	// This method determines whether or not an integer is prime.
-	public static boolean isPrime(int num1){
+	public static boolean isPrime(int num1) {
 		boolean prime;
 		num1 = (int) absValue(num1);
-		for(int i = 2; i<=num1-1; i++){
+		for (int i = 2; i <= num1 - 1; i++) {
 			prime = Calculate.isDivisibleBy(num1, i);
 			System.out.println(i);
-			if(prime ==true){
+			if (prime == true) {
 				return false;
 			}
 		}
 		return true;
 	}
+
 	// This method finds the greatest common factor of two integers.
-	public static int gcf(int num1, int num2){
+	public static int gcf(int num1, int num2) {
 		int greatestCommonFactor = 1;
-		for(int i=1; i<=num1; i++){
-			if(isDivisibleBy(num1,i) && isDivisibleBy(num2,i)){
-				greatestCommonFactor=i;
+		for (int i = 1; i <= num1; i++) {
+			if (isDivisibleBy(num1, i) && isDivisibleBy(num2, i)) {
+				greatestCommonFactor = i;
 			}
 		}
 		return (greatestCommonFactor);
 	}
+
 	// This method returns an approximation of the square root of the value passed.
-	public static double sqrt(double num1){
-		if(num1 < 0) {
+	public static double sqrt(double num1) {
+		if (num1 < 0) {
 			throw new IllegalArgumentException("Cannot find the square root of a negative value");
 		}
 		double i = 0;
-		double sqrt = num1/2.0;
-		if(num1<=0){
+		double sqrt = num1 / 2.0;
+		if (num1 <= 0) {
 			throw new IllegalArgumentException("Cannot square root this number");
 		}
-		do{
-			i=sqrt;
-			sqrt=(i+(num1/i))/2.0;
-			
-		}while(i-sqrt !=0);
+		do {
+			i = sqrt;
+			sqrt = (i + (num1 / i)) / 2.0;
+
+		} while (i - sqrt != 0);
 		sqrt = round2(sqrt);
 		return sqrt;
 	}
+
 	//
-	public static String quadForm (int a, int b, int c) {	
-		if(discriminant(a, b, c) < 0 ) {
+	public static String quadForm(int a, int b, int c) {
+		if (discriminant(a, b, c) < 0) {
 			return "No real roots";
-		}else if (discriminant(a, b, c) == 0) {
+		} else if (discriminant(a, b, c) == 0) {
 			double realroot = (-b / (2 * a));
 			double realrootrounded = round2(realroot);
-				return "" + realrootrounded;
-			}else {
+			return "" + realrootrounded;
+		} else {
 			double root1 = (-b + sqrt(discriminant(a, b, c))) / (2 * a);
 			double root2 = (-b - sqrt(discriminant(a, b, c))) / (2 * a);
 			double roundedroot1 = round2(root1);
 			double roundedroot2 = round2(root2);
 			if (min(roundedroot1, roundedroot2) == roundedroot1) {
 				return root1 + " and " + root2;
-			}else {
+			} else {
 				return root2 + " and " + root1;
 			}
 		}
-		
+
 	}
 }
